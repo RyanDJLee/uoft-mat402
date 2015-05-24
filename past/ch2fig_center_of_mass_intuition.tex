@@ -1,0 +1,24 @@
+\begin{figure}[h]
+\centering
+\begin{asy}
+size (4cm);
+pair A, B, C;
+A=(3,4);
+B=(6,5.5);
+C=(5,5);
+draw((0,3)--(2,7)--(10,7)--(8,3)--cycle);
+draw((4.8,0)--(5,5)--(5.2,0)--cycle);
+draw(A--B);
+dot("$A$",A,NW);
+dot("$B$",B,NE);
+dot("$C$",C,N);
+draw(A--(A-(0,2)),EndArrow);
+label("$m_1$",A-(0,2),SW);
+draw(B--(B-(0,1)),EndArrow);
+label("$m_2$",B-(0,1),SE);
+draw(C--(C+(0,3)),EndArrow);
+label("$m_1+m_2$",C+(0,3),N);
+\end{asy}
+\caption{Force proportional to $m_1+m_2$ must be placed at $C$ to keep the table in equilibrium}
+\label{fig:center_of_mass_intuition}
+\end{figure}

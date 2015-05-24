@@ -1,0 +1,149 @@
+\chapter{Projective duality}
+
+\section{Definition of projective duality}
+
+We are going to see now a very funny transformation, called projective duality. What it allows us to do is to take a projective theorem (like Pascal's), apply this transformation, and get a new theorem, which is guaranteed to be true! We saw something similar with inversion: we could prove a theorem, apply inversion and get a new one. Projective duality, however, is not a construction that requires any choices, however (like a choice of circle for inversion), but rather is an internal feature of projective geometry.
+
+Let us proceed straight to the definition. Let $V$ be a vector space and let $V^*$ denote the space dual to $V$, i.e. the space of all linear functions on $V$. First we define duality as a transformation from the set of linear subspaces of $V$ to the set of linear subspaces of $V^*$: the space $W\subset V$ gets sent to the space $W^*=\{f\in V^*| \langle f,w \rangle =0\}$, i.e. to the space of all functionals evaluating to zero on $W$. We used the notation $\langle f,w \rangle$ for the value of functional $f$ on vector $w$ to emphasize the symmetry of roles of $f$ and $w$: we can think of a vector $w$ as a functional on the space $V^*$ evaluating on the element $f\in V^*$ to $\langle f, w \rangle$. This way of thinking shows how to identify $(V^*)^*$ with $V$ itself (for finite dimensional $V$ the embedding of $V$ into $(V^*)^*$ we described is an isomorphism, because of equality of dimensions of the space and its dual). If we identify $V$ with $(V^*)^*$ in this way, applying duality twice becomes identity: $(W^*)^*=W$ for any $W\subset V$.
+
+The duality we described is easily seen to reverse inclusions: if the linear subspace $W_1$ contains $W_2$, then every function vanishing on it, must vanish on $W_2$ as well, hence $W_1^*$ is contained in $W_2^*$.
+
+Now we can projectivise duality we defined above to get the notion of projective duality: projective duality is the transformation from projective subspaces of $\mathbb{P} V$ to projective subspaces of $\mathbb{P}V^*$ sending the subspace $\mathbb{P}W$ (for $W\subset V$ a linear subspace) to $\mathbb{P}W^*$.
+
+Since in the usual duality lines through origin get sent to hyperplanes through origin, in projective duality points are dual to hyperplanes. More generally spaces of dimension $k$ are dual to spaces of codimension $k+1$.
+
+By now we learned the following important properties of projective duality: it sends points to hyperplanes, hyperplanes to points and reverses inclusion relations.
+
+For instance if before the duality we had a picture of $n$ points lying on the same hyperplane, after applying duality we will get the picture of $n$ hyperplanes passing through the same point.
+
+To get some really powerful applications of projective duality we will have to extend its definition to more than just linear subspaces.
+
+\section{Dual polygon and dual curve}
+
+We now restrict our attention to the projective plane.
+
+Let $C$ be a polygon in $mathbb{RP}^2$ whose vertices are $P_1,\ldots,P_n$. Let $L_1,\ldots,L_n$ denote the lines on which the sides of polygon $C$ lie, so that $L_i$ is the line through $P_i$ and $P_{i+1}$ and $P_i$ is the point of intersection of lines $L_{i-1}$ and $L_i$.
+
+We define the dual polygon $C^*$ to be the polygon whose vertices are points $L_i^*$ - the points in $\mathbb{RP}_2^*$, which are dual to the sides of the polygon $C$. What are its sides? The side containing the points $L_{i-1}^*$ and $L_{i}^*$ should be dual to the point of intersection of $L_{i-1}$ and $L_i$, i.e. to $P_i$.
+
+Thus we can think of the dual polygon in two ways: as the polygon whose sides are the lines dual to the vertices of the original polygon, or as the polygon, whose vertices are the points dual to the sides of the original one.
+
+By combining these two descriptions it's easy to see that the dual polygon of the dual polygon is the original one.
+
+Indeed, the vertices of the dual polygon of $C^*$ are the points dual to $P_i^*$, hence are equal to $P_i$.
+
+We introduced the notion of a dual polygon to help us understand better the following definition of a dual curve.
+
+Suppose $C$ is a curve in the projective plane $\mathbb{RP}^2$. We define the dual curve to $C$ to be the curve $C^*$, whose points are the points dual to tangent lines to $C$.
+
+We can think of the space $\mathbb{RP}^2$ as the space parameterizing lines in $\mathbb{RP}^2$.Then the curve $C^*$ should be thought of as the curve whose points are tangent lines to $C$. 
+
+We can imagine the curve $C$ as a limit of polygons, whose sides get shorter and shorter and whose vertices lie on the curve $C$. Then the sides of this polygon tend to the lines tangent to the curve $C$. We see then that the dual curve $C^*$ is approximated well by the dual polygons to the polygons approximating $C$.
+
+The observations we made about dual polygons have their direct analogues for dual curves. Namely, dual curve to a curve $C$ can be thought of in two ways:
+
+The curve whose points are dual to the tangent lines of $C$
+
+or
+
+The curve whose tangent lines are dual to the points of $C$
+
+This observation lead immediately to the claim that the dual curve of the dual curve of $C$ is $C$ itself.
+
+Let's see a couple of examples: if the curve $C$ has a double tangent, i.e. a line tangent to $C$ at two points, then the dual curve will have a self-intersection point. Indeed, imagine a point $P$ going along $C$. Then the tangent line at $P$ is changing with $P$. As $P$ goes from one tangency point of the double tangency line to $C$ to the other one, the tangent line makes a loop and comes back to itself. Thus the dual curve intersects itself before closing up.
+
+Dually, if a curve has a double point, then its dual has a double tangent.
+
+Space for animation! (worth 5 points if done with asymptote animation module: the animation should depict a curve with point $P$ moving along it and another curve $C^*$, which is dual to the first, on which point dual to the tangent line at $P$ is moving)
+
+In a similar vein, if a curve has an inflection point (i.e. point where its concavity changes), then the dual curve will have a cusp. (Define cusp!) As point $P$ moves along $C$ and passes the inflection point, the tangent line changes the direction of its movement.
+
+Dually, if a curve has a cusp then the dual curve has an inflection point.
+
+These two last statements make it necessary to define a little bit more precisely what kind of curves we are talking about. Talking about smooth curves is not enough - even if the original curve is smooth, its dual might have cusps. On the other hand we do need the notion of the tangent line at every point to define the dual of the curve at all. (*The class of curves, whose only singularities are cusps and double points seems to be the most natural class to talk about.*) In particular all algebraic curves fall into this class, and hence projective duality becomes a valuable tool in the study of projective algebraic geometry.
+
+We could have defined the notion of dual hypersurface to a given hypersurface $C$ in $\mathbb{RP}^n$ in essentially the same way we did it for curves. The points of the dual hypersurface $C^*$ are the dual points of tangent hyperplanes to $C$ and then we could prove that the tangent hyperplanes to $C^*$ are the hyperplanes dual to the points of $C$. We won't use this theorem below, however, so we don't explain why it is true.
+
+\section{Dual to a quadric}
+
+In this section we want to understand what is the dual hypersurface to a quadric.
+
+Let $A$ be a symmetric matrix defining the quadric $\{x|\langle Ax, x\rangle =0\}$. We want to understand what is the equation of the hyperplane tangent to this quadric at point $x_0$ on it. To do so, let's try to move the point $x_0$ infinitesimally in direction $\xi$ and see whether we go off the quadric or stay on it. To do so we evaluate the function $\langle Ax,x \rangle$ at point $x_0+\xi$: $$\langle A(x_0+\xi), x_0+\xi \rangle = \langle Ax_0,x_0 \rangle + \langle A\xi, x_0 \rangle + \langle A x_0, \xi \rangle + \langle A \xi, \xi \rangle$$
+
+The first term $\langle Ax_0,x_0 \rangle$ in this formula vanishes because the point $x_0$ lies on the quadric. The last term is an infinitesimal of second order (it is of order $|\xi|^2$) and hence can be ignored in linear approximation. Thus if we want to stay on the quadric to the first order of magnitude, we should have $ \langle A\xi, x_0 \rangle + \langle A x_0, \xi \rangle =0$. Since the matrix $A$ is symmetric, $\langle A\xi,x_0 \rangle = \langle \xi, Ax_0 \rangle$ and thus the equation of the hyperplane tangent to the quadric at point $x_0$ is $\langle Ax_0,\xi \rangle=0$. The point dual to this hyperplane clearly is $Ax_0$.
+
+As the point $x$ varies along the the quadric $\langle Ax,x \rangle =0$, the point $y=Ax$ varies along the quadric $\langle y, A^{-1} y \rangle=0$. Thus we have proved the following theorem.
+
+\begin{theorem}
+The dual hypersurface to a non-degenerate quadric is a non-degenerate quadric. Moreover, the dual of the quadric given by equation $x\in \mathbb{RP}^n|\langle Ax, x \rangle =0$ is the quadric given by equation $y\in \mathbb{RP}^{n*}|\langle A^{-1}y,y\rangle=0$.
+\end{theorem}
+
+\section{Brianchon's theorem}
+
+Projective duality gives us a very simple way to generate new theorems from old ones: all we have to do is apply duality.
+
+Let's do it for Pascal's theorem.
+
+Recall that Pascal's theorem tells us that if $O_1,O_2,O_3,P_1,P_2,P_3$ are points on a quadric $\mathfrak{E}$, then the points $E_1,E_2,E_3$ defined as the points of intersection of $O_2P_3$ with $O_3P_2$, of $O_1P_3$ with $O_3P_1$ and of $O_2P_1$ with $O_1,P_2$ respectively, are collinear.
+
+Let's try to apply duality to this claim.
+
+The dual to a quadric $\mathfrak{E}$ is a quadric $\mathfrak{E}^*$. The dual lines to the points $O_1,O_2,O_3,P_1,P_2,P_3$ are lines $O_1^*,O_2^*,O_3^*,P_1^*,P_2^*,P_3^*$, which are tangent to the quadric $\mathfrak{E}^*$.
+
+The point dual to the line $O_2P_3$ is the point of intersection of lines $O_2^*$ and $P_3^*$. Similarly the point dual to the line $O_3P_2$ is the point of intersection of lines $O_3^*$ and $P_2^*$. Thus the line dual to point $E_1$ is the line $E_1^*$ containing the points of intersection of $O_2^*$ with $P_3^*$ and of $O_3^*$ with $P_2^*$. The definition of $E_2^*$ and $E_3^*$ is similar.
+
+Finally the statement dual to "$E_1,E_2,E_3$ are collinear" is "$E_1^*,E_2^*,E_3^*$ are concurrent.
+
+What we get is the wonderful theorem of Brianchon.
+
+\begin{theorem}
+
+The diagonals connecting opposite vertices of a hexagon circumscribed around a conic are concurrent.
+
+\end{theorem}
+
+Notice that we know this theorem is valid because we know the theorem of Pascal and projective duality. We could however prove this theorem without using projective duality, if we wanted to. To do so we would need to dualize all the arguments we used for proving Pascal's theorem.
+
+The key argument for the proof of Pascal's theorem was the following:
+
+Let $f:l_1\to l_2$ be a mapping from line $l_1$ to line $l_2$ in a projective plane. Suppose $f$ is projective, (i.e. preserves cross ratios). Let $O$ be the point of intersection of $l_1$ and $l_2$. Suppose that $f(O)=O$. Then there exists a point $C$ in the plane so that the mapping $f$ coincides with the central projection from line $l_1$ to line $l_2$ with center $C$.
+
+In the dual statement instead of a mapping taking in points on line $l_1$ and spitting out points of line $l_2$, we should talk about a mapping that takes in lines passing through one point and spitting out lines passing through another line.
+
+So our dual statement will start with "Let $f:\mathfrak{P}_1\to \mathfrak{P}_2$ be a mapping from the pencil $\mathfrak{P}_1$ of lines passing through point $P_1$ to the pencil $\mathfrak{P}_2$ of lines passing through point $P_2$. Suppose that $f$ is projective (i.e. preserves cross ratios)."
+
+Instead of point $O$ - the point lying on both lines $l_1,l_2$, we will have the line $P_1P_2$ that belongs to both pencils.
+
+Finally we should understand what is dual to a central projection with center $C$. Recall that it is sends the point $X$ on line $l_1$ to the point of $l_2$ lying on the line $CX$.
+
+We now define a "central projection from pencil of lines $\mathfrak{P}_1$ to the pencil of lines $\mathfrak{P}_2$ with center at line $l$". The image of line $X\in \mathfrak{P}_1$ under this projection will be the line in $\mathfrak{P}_2$ passing through point of intersection of $X$ with $l$.
+
+Finally we can formulate the dual statement to the end:
+
+Let $f:\mathfrak{P}_1\to \mathfrak{P}_2$ be a mapping from the pencil $\mathfrak{P}_1$ of lines passing through point $P_1$ to the pencil $\mathfrak{P}_2$ of lines passing through point $P_2$. Suppose that $f$ is projective (i.e. preserves cross ratios). Suppose also that $f(P_1P_2)=P_1P_2$. Then there exists a line $l$ in the plane so that the mapping $f$ coincides with a mapping sending line $X\in \mathfrak{P}_1$ to the line in $\mathfrak{P}_2$ passing through point of intersection of $X$ with $l$.
+
+We hope the reader now has acquired some sense for what does it mean to dualize statements/definitions of projective geometry.
+
+\section{Projective mappings from a line to a line, revisited}
+
+Now we have enough tools to describe all projective mappings from a line $l_1$ in a plane to another line $l_2$ in the same plane.
+
+Recall that we proved already that through any five points one can draw a unique quadric provided no three points among the five are collinear. Moreover in this case the quadric is non-degenerate.
+
+Duality gives us the fact that there exists exactly one quadric tangent to given five lines in general position (i.e. no three meet at a point), and, moreover, this quadric is non-degenerate.
+
+Now we will prove the following theorem.
+
+\begin{theorem}
+Let $f:l_1\to l_2$ be a projective mapping from line $l_1$ to line $l_2$ in the plane. Let $O$ be the point of intersection of $l_1$ and $l_2$.
+
+If $f(O)=O$, then there exists a point $C$ in the plane so that the mapping $f$ coincides with the central projection with center $C$.
+
+If $f(O)\neq O$, then there exists a non-degenerate conic $C$ tangent to $l_1$ and $l_2$ such that the mapping $f$ sends every point $X$ on $l_1$ to the point on $l_2$ lying on the line passing through $X$ and tangent to $C$, which is different from $l_1$.
+\end{theorem}
+
+\begin{proof}
+We have dealt with the proof of the first statement in chapter ...
+
+Now suppose $f(O)\neq O$. Take any three points on $l_1$ which are distinct and do not coincide with $O$ or its preimage under $f$. Call these points $A,B,C$. Now the lines $l_1,l_2,Af(A),Bf(B),Cf(C)$ are five lines in general position. Hence there exists a unique non-degenerate quadric $C$ tangent to all five of them. Now define the map $\tilde{f}$ to be the map that takes a point $X$ on $l_1$ and outputs the point of $l_2$ that lies on the tangent line to conic $C$ through point $X$ and which is different from $l_1$. The map $\tilde{f}$ is projective (see the proof that cross ratio of four points on a quadric is well-defined). Moreover, the maps $f$ and $\tilde{f}$ agree on three points: $A$,$B$,$C$! Hence $f$ must be the same as $\tilde{f}$.
+\end{proof}

@@ -1,0 +1,10 @@
+Comments Chapter 2
+In center of mass add that the sum of masses is non-zero
+
+With this restriction in the proof add: if the sum is non-zero, then one can remove one of the masses so that the sum of the rest is non-zero
+
+In axioms add invariance under multiplication of all masses by the same number
+
+Add a multidimensional example of medians in tetrahedron
+
+Add that this is linear algebra and can be done over any field

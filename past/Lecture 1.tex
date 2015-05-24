@@ -1,0 +1,375 @@
+\chapter{Lecture 1, Theorems of Ceva and Menelaus}
+We will start this lecture by proving some basic theorems in the geometry of a planar triangle. Let $A, B, C$ be the vertices of the triangle and $A', B', C'$ be any points on the lines $BC, CA$ and $AB$ respectively (see fig. 1).
+\begin{figure}[h]
+\centering
+\begin{asy}
+size (3cm);
+pair A, B, C, A1, B1, C1;
+A=(1,2);
+B=(0,0);
+C=(3,0);
+A1=2/3*B+1/3*C;
+B1=2/3*C+1/3*A;
+C1=2/5*A+3/5*B;
+draw(A--B--C--cycle);
+label("$A$",A,N);
+label("$B$",B,S);
+label("$C$",C,S);
+draw(A--A1);
+draw(B--B1);
+draw(C--C1);
+label("$A'$",A1,S);
+label("$B'$",B1,NE);
+label("$C'$",C1,NW);
+\end{asy}
+\label{fig:embedded}
+\end{figure}
+For arbitrarily chosen points $A',B',C'$, there is no reason to expect that the three segments $AA', BB', CC'$ will meet at one point. However, they do meet in many significant cases. To show this, we start by formulating a general criterion that tells us when the segments $AA', BB', CC'$ are concurrent. This criterion has the name "Ceva's theorem".
+\begin{theorem}
+Let $ABC$ be a triangle and $A', B', C'$ be points on the sides $BC, CA$ and $AB$ respectively. Then the three lines $AA', BB', CC'$ are concurrent if and only if $\frac{BA'}{A'C}\cdot\frac{CB'}{B'A}\cdot\frac{AC'}{C'B}=1$.
+\end{theorem}
+\begin{figure}[h]
+\centering
+\begin{asy}
+size (3cm);
+pair A, B, C, A1, B1, C1, P;
+A=(1,2);
+B=(0,0);
+C=(3,0);
+A1=1/3*B+2/3*C;
+B1=2/3*C+1/3*A;
+C1=1/2*A+1/2*B;
+draw(A--B--C--cycle);
+label("$A$",A,N);
+label("$B$",B,S);
+label("$C$",C,S);
+draw(A--A1);
+draw(B--B1);
+draw(C--C1);
+label("$A'$",A1,S);
+label("$B'$",B1,NE);
+label("$C'$",C1,NW);
+P=1/4*A+1/4*B+1/2*C;
+label("P",P,S);
+\end{asy}
+\label{fig:ceva}
+\end{figure}
+We will prove this theorem using ratios of the areas of the smaller triangles created by segments $AA', BB', CC'$.
+\begin{lemma}
+Let $ABC$ be an arbitrary triangle and let $D$ be a point on the side $BC$. Then $\frac{\area(BDA)}{\area(DCA)}=\frac{BD}{DC}$
+\end{lemma}
+\begin{proof}
+Let $B_1,\ldots,B_{n-1}$ be equally spaced points on the segment $AB$. Similarly let $C_1,\ldots,C_{n-1}$ be equally spaced points on the segment $AC$ and $D_1,\ldots,D_{n-1}$ -- on the segment AD. If one scales the triangle $ABDC$ by factor $\frac{i}{n}$, leaving the point $A$ on its place, one will get the figure $AB_iD_iC_i$. Hence the figure $AB_iD_iC_i$ is a triangle (i.e. the point $D_i$ belongs to the segment $B_iC_i$) and the ratios $\frac{B_iD_i}{D_iC_i}$ are all equal to the ratio $\frac{BD}{DC}$. Now the area of each of the quadrilaterals $B_iD_iD_{i-1}B_{i-1}$ is equal to $\frac{BD}{DC}$ times the area of $D_iC_iC_{i-1}D_{i-1}$ up to an error of order $\frac{1}{n^2}\cdot \area(ABC)$ (see picture).
+\begin{figure}[h]
+\centering
+\begin{asy}
+size (11cm);
+pair A, B, C, D, Bi, Ci, Di;
+int n;
+path T;
+picture pic;
+n=7;
+A=(2,4);
+B=(0,0);
+C=(6,0);
+D=2/5*B+3/5*C;
+draw(A--B--C--cycle);
+label("$A$",A,N);
+label("$B$",B,S);
+label("$C$",C,S);
+draw(A--D);
+label("$D$",D,S);
+for(int i=1;i<n; ++i)
+{
+Bi=(i*A+(n-i)*B)/n;
+Ci=(i*A+(n-i)*C)/n;
+Di=(i*A+(n-i)*D)/n;
+draw(Bi--Di--Ci);
+dot(Bi);
+dot(Ci);
+dot(Di);
+}
+Bi=(4*A+(n-4)*B)/n;
+Ci=(4*A+(n-4)*C)/n;
+Di=(4*A+(n-4)*D)/n;
+label("$B_{i-1}$",Bi,NW);
+label("$D_{i-1}$",Di,dir(143));
+label("$C_{i-1}$",Ci,NE);
+drawing on pic
+label(pic,"$B_{i-1}$",Bi,W);
+label(pic,"$D_{i-1}$",Di,N);
+label(pic,"$C_{i-1}$",Ci,E);
+T=Bi--(Bi+(B-A)/n)--(Bi+(D-A)/n)--cycle; small triangle on the left
+draw(pic,T);
+draw(pic,(Bi+((B-A)/n+(D-A)/n)/2)--shift(1.7*dir(-45))*(Bi+(B-A)/n/2),EndArrow); arrow from it to its copy
+draw(pic,shift(1.7*dir(-45))*T); its copy on the bottom
+T=Bi--Di--(Di+(D-A)/n)--(Bi+(D-A)/n)--cycle; left parallelogram
+draw(pic,T);
+draw(pic,(Bi+Di)/2--shift(2.5*dir(125))*(((Di+(D-A)/n)+(Bi+(D-A)/n))/2),EndArrow); arrow from it to its copy
+draw(pic,shift(2.5*dir(125))*T); its copy on top
+label(pic,"Area$($",shift(2.5*dir(125))*(Bi+(D-A)/2/n),W); text to the left of the copy of left parallelogram
+label(pic,"$)=$",shift(2.5*dir(125))*(Di+(D-A)/2/n),E); text to the right of the copy of left parallelogram
+T=Di--Ci--(Ci+(D-A)/n)--(Di+(D-A)/n)--cycle; right parallelogram
+draw(pic,T);
+draw(pic,(Ci+Di)/2--shift(1.7*dir(100))*shift(1.5*E)*(((Di+(D-A)/n)+(Ci+(D-A)/n))/2),EndArrow); arrow from it to its copy on the top
+draw(pic,shift(1.7*dir(100))*shift(1.5*E)*T); its copy above
+label(pic,"$=\frac{BD}{DC}\cdot$Area$($",shift(1.7*dir(100))*shift(1.5*E)*(Di+(D-A)/2/n),W); text to the left of the copy
+label(pic,"$)$",shift(1.7*dir(100))*shift(1.5*E)*(Ci+(D-A)/2/n),E); text to the right of the copy
+T=Ci--(Ci+(C-A)/n)--(Ci+(D-A)/n)--cycle; small triangle to the right
+draw(pic,T);
+draw(pic,(Ci+(C-A)/2/n+(D-A)/2/n)--shift(1.7*dir(-45))*shift(Bi-Ci)*(Ci+(C-A)/2/n),EndArrow);
+draw(pic,shift(1.7*dir(-45))*shift(Bi-Ci)*T); its copy on the bottom
+label(pic,scale(0.8)*minipage("Error of order
+\smallskip
+$\frac{1}{n^2}\cdot$Area$(ABC)$",2.5cm),shift(1.7*dir(-45))*shift(Bi-Ci)*(Ci+(C-A)/2/n+(D-A)/2/n),S); //text below its copy on the bottom
+Bi=(3*A+(n-3)*B)/n;
+Ci=(3*A+(n-3)*C)/n;
+Di=(3*A+(n-3)*D)/n;
+label("$B_{i}$",Bi,WNW);
+label("$D_{i}$",Di,dir(32));
+label("$C_{i}$",Ci,ENE);
+label(pic,"$B_{i}$",Bi,W);
+label(pic,"$D_{i}$",Di,S);
+label(pic,"$C_{i}$",Ci,E);
+add(shift(6*E)*pic);
+\end{asy}
+\label{fig:ratios}
+\end{figure}
+By summing up $n$ such relations we get that $\area(BDA)=\frac{BD}{DC}\cdot\area(DCA)$ up to an error of order $n\cdot\frac{1}{n^2}\cdot \area(ABC)=\frac{1}{n}\cdot\area(ABC)$. Hence, as $n$ grows arbitrarily large the equality $\area(BDA)=\frac{BD}{DC}\cdot\area(DCA)$ becomes arbitrarily precise: It must hold exactly.
+\end{proof}
+\begin{remark}
+We could of course prove this lemma by using the formula that expresses the area of a triangle in terms of its base and height, noticing that the triangles $BDA$ and $DCA$ share a common height from vertex $A$; and indeed such a proof looks simpler. However we wanted our arguments to rely only on ratios of lengths and ratios of areas. These notions are intrinsic to the affine geometry of the plane, whereas lengths and areas themselves are not. See also the concluding remarks at the end of this lecture.
+\end{remark}
+We will in fact use the following corollary from this lemma.
+\begin{corollary}
+Let $ABC$ be a triangle, with a point $D$ lying on the side $BC$ and point $P$ -- any point on the segment $AD$. Then $$\frac{\area(BPA)}{\area(PCA)}=\frac{BD}{DC}$$
+\end{corollary}
+\begin{figure}[h]
+\centering
+\begin{asy}
+size (3cm);
+pair A, B, C, D, P;
+A=(1,2);
+B=(0,0);
+C=(3,0);
+D=1/3*B+2/3*C;
+draw(A--B--C--cycle);
+label("$A$",A,N);
+label("$B$",B,S);
+label("$C$",C,S);
+label("$D$",D,S);
+P=1/4*A+1/4*B+1/2*C;
+label("P",P,WNW);
+draw(A--P);
+draw(B--P);
+draw(C--P);
+draw(P--D,linetype("0 4"));
+\end{asy}
+\label{fig:corol}
+\end{figure}
+\begin{proof}
+From the lemma applied to triangle $ABC$ we get $$\area(BDA)=\frac{BD}{DC}\cdot\area(DCA)$$ From the same lemma applied to triangle $BCP$ we get $$\area(BDP)=\frac{BD}{DC}\cdot\area(DCP)$$ By subtracting these two from each other we get $$\area(BPA)=\frac{BD}{DC}\cdot \area(PCA)$$ as needed.
+\end{proof}
+Now we are ready to prove Ceva's theorem.
+\begin{proof}
+For one direction suppose that the segments $AA',BB',CC'$ meet at a point $P$. From the corollary we find that
+\begin{align*}
+\frac{BA'}{A'C}=\frac{\area(BPA)}{\area(PCA)} \\
+\frac{CB'}{B'A}=\frac{\area(CPB)}{\area(PAB)} \\
+\frac{AC'}{C'B}=\frac{\area(APC)}{\area(PBC)}
+\end{align*}
+Multiplying these equations together gives $\frac{BA'}{A'C}\cdot\frac{CB'}{B'A}\cdot\frac{AC'}{C'B}=1$, as needed.
+For the other direction, assume that points $A',B',C'$ are chosen on the sides $BC,CA,AB$ so that $\frac{BA'}{A'C}\cdot\frac{CB'}{B'A}\cdot\frac{AC'}{C'B}=1$. Let P be the point of intersection of $AA'$ and $BB'$. Extend the segment $CP$ to meet $AB$ at $C''$. Then, using the part of the theorem just-prooved, $$\frac{BA'}{A'C}\cdot\frac{CB'}{B'A}\cdot\frac{AC''}{C''B}=1$$. But we assumed also that $$\frac{BA'}{A'C}\cdot\frac{CB'}{B'A}\cdot\frac{AC'}{C'B}=1$$. Hence $\frac{AC'}{C'B}=\frac{AC''}{C''B}$, meaning that $C'$ and $C''$ are in fact the same point. Thus the point $P$ lies on the segment $CC'$ as well.
+\end{proof}
+\begin{remark}
+Ceva's theorem has analogues both in spherical and hyperbolic geometries. Instead of quotients of lengths of sides, quotients of certain functions of these lengths are used (sines for spherical geometry and hyperbolic sines for hyperbolic geometry).
+\end{remark}
+We can also find the ratio in which the point $P$ divides the cevians $AA',BB'$ and $CC'$ in terms of the ratios in which the points $A',B'$ and $C'$ divide the sides of the triangle. Indeed, it follows from the lemma that $\frac{AP}{PA'}\cdot\area(A'PC)=\area(PCA)$ and similarly that $\frac{AP}{PA'}\cdot\area(BA'P)=\area(BPA)$. By adding these two equalities we get that $\frac{AP}{PA'}\cdot\area(BCP)=\area(PCA)+\area(BPA)$, or $\frac{AP}{PA'}=\frac{\area(PCA)}{\area(BCP)}+\frac{\area(BPA)}{\area(BCP)}$. But from the corrollary we know that $\frac{\area(PCA)}{\area(BCP)}=\frac{AC'}{C'B}$ and $\frac{\area(BPA)}{\area(BCP)}=\frac{AB'}{B'C}$. Thus $$\frac{AP}{PA'}=\frac{AC'}{C'B}+\frac{AB'}{B'C}$$.
+Now we will use Ceva's theorem to prove a couple of classical results. Recall that a median in a triangle is a line connecting a vertex with the midpoint of the opposite side. An angle bisector is a line dividing an internal angle of a triangle at a vertex into two equal parts. An altitude is a perpendicular dropped from a vertex to the opposite side of the triangle.
+We will prove that the three medians of any triangle are concurrent. The same holds for angle bisectors and altitudes. We will first derive these results from Ceva's theorem and then rederive them in an independent way.
+If $A',B',C'$ are midpoints of the sides of the triangle $ABC$, then $\frac{BA'}{A'C}\cdot\frac{CB'}{B'A}\cdot\frac{AC'}{C'B}=1\cdot1\cdot1=1$, and hence, by Ceva's theorem the three medians $AA', BB'$ and $CC'$ are concurrent.
+Let's prove the same result more directly. We claim that the median $AA'$ is exactly the locus of points $P$ in the plane such that $\area(ABP)=\area(PCA)$. Indeed, if the point $D$ is the intersection point of $AP$ and $BC$, then the quotient $\frac{\area(ABP)}{\area(PCA)}$ is equal to $\frac{BD}{DC}$ by the above corollary. Hence it can be equal to $1$ if and only if the point $D$ coincides with the midpoint of $BC$; that is $P$ lies on $AA'$.
+Now let $P$ be the point of intersection of medians $AA'$ and $BB'$. By the result we just showed $\area(BPA)=\area(PCA)$ (because $P$ is on $AA'$) and $\area(BPA)=\area(BCP)$ (because $P$ is on $BB'$). Combining these two equalities we get that $\area(PCA)=\area(BCP)$, hence the point $P$ lies on the median $CC'$.
+Our next application of Ceva's theorem will be to show that the three internal angle bisectors in a triangle are concurrent. To prove this, we use the following:
+\begin{lemma}
+Let $A'$ be a point on the side $BC$ so that $AA'$ is the internal angle bisector of the angle at vertex $A$ in triangle $ABC$. Then $\frac{BA'}{A'C}=\frac{BA}{AC}$.
+\end{lemma}
+\begin{proof}
+From lemma ..., we know that $\frac{BA'}{A'C}=\frac{\area(BA'A)}{\area(A'CA)}$. Now the equality of angles $\angle BAA'$ and $\angle A'AC$ implies that if we reflect the triangle $A'CA$ in the line $AA'$, then the reflected copy will share an angle with triangle $BA'A$ and the reflection of $C$ will lie on the line $AB$ (see picture).
+\begin{figure}[h]
+\centering
+\begin{asy}
+size (6cm,3cm);
+pair A, B, C, A1, C1;
+picture pic;
+A=(2,2);
+B=(0,0);
+C=(3,0);
+A1=(length(C-A)*B+length(B-A)*C)/(length(B-A)+length(C-A));
+C1=A+2*dot(A1-A,C-A)/dot(A1-A,A1-A)*(A1-A)-(C-A);
+draw(A--B--C--cycle);
+label("$A$",A,N);
+label("$B$",B,S);
+label("$C$",C,S);
+draw(A--A1);
+label("$A'$",A1,S);
+draw(pic,A--B--A1--cycle);
+label(pic,"$A$",A,N);
+label(pic,"$A'$",A1,S);
+label(pic,"$B$",B,S);
+draw(pic,A1--C--A,linetype("0 4"));
+draw(pic,A1--C1--A);
+label(pic,"$C$",C1,WNW);
+add(shift(4*E)*pic);
+\end{asy}
+\label{fig:bisector}
+\end{figure}
+But in the picture after the reflection we see that $\frac{\area(BA'A)}{\area(A'CA)}=\frac{AB}{AC}$, by the same lemma.
+\end{proof}
+This lemma implies that if $AA',BB'$ and $CC'$ are internal bisectors of triangle $ABC$, then $\frac{BA'}{A'C}\cdot\frac{CB'}{B'A}\cdot\frac{AC'}{C'B}=\frac{BA}{AC}\cdot\frac{CB}{BA}\cdot\frac{AC}{CB}=1$, so Ceva's theorem tells us that $AA', BB'$ and $CC'$ are concurrent.
+We can prove it in a different way. For this we first notice that the internal angle bisector of an angle $A$ is exactly the locus of points $P$ inside the angle that are equidistant from the two rays that form $A$. Indeed, let $P'$ and $P''$ be the feet of perpendiculars dropped from the point $P$ to the two rays. If the point $P$ is on the angle bisector of angle $A$, then the reflection of triangle $APP'$ in line $AP$ must coincide with the triangle $APP''$ (because $\angle PAP'=\angle PAP''$ and $\angle APP'=\pi/2-\angle PAP'=\pi/2-\angle PAP''=\angle APP''$), and hence $PP'=PP''$. Conversely, if $P$ is a point inside the angle $A$ with $PP'=PP''$, then in the right triangles $APP'$ and $APP''$ side $AP$ is common, and sides $PP'$ and $PP''$ are equal. But there is only one right triangle with a given leg and hypotenuse, so the triangles must be equal. In particular this implies that $\angle PAP'=\angle PAP''$, such that the point $P$ lies on the angle bisector of angle $A$.
+\begin{figure}[h]
+\centering
+\begin{asy}
+size (3cm);
+pair A, B, C, P, P1, P2;
+A=(1.5,2);
+B=(0,0);
+C=(3,0);
+P=(length(C-A)*B+length(B-A)*C)/(length(B-A)+length(C-A));
+P1=A+dot(B-A,P-A)/dot(B-A,B-A)*(B-A);
+P2=A+dot(C-A,P-A)/dot(C-A,C-A)*(C-A);
+draw(A--B);
+draw(A--C);
+draw(A--P);
+draw(P--P1);
+draw(P--P2);
+label("$A$",A,N);
+label("$P$",P,S);
+label("$P'$",P1,N);
+label("$P''$",P2,NE);
+\end{asy}
+\label{fig:bisector1}
+\end{figure}
+Now let $AA'$, $BB'$, and $CC'$ be the internal angle bisectors of triangle $ABC$. Let $P$ be the point of intersection of the angle bisectors $AA'$ and $BB'$. We have proved above that point $P$ is equidistant from sides $AB$ and $AC$ because it lies on the angle bisector $AA'$. Also, it is equidistant from sides $AB$ and $BC$, because it lies on the angle bisector $BB'$. Hence the point $P$ is located at the same distance from the sides $AC$ and $BC$, and thus it must lie on the angle bisector $CC'$.
+Note that since the point of intersection of the angle bisectors of triangle $ABC$ is equidistant from the sides of the triangle, it must be the center of the circle inscribed in triangle $ABC$.
+As another corollary from Ceva's theorem, we can prove that the three altitudes of any triangle are concurrent. For obtuse triangles the point of concurrency lies outside the triangle, so some care must be taken in this case.
+\begin{figure}[h]
+\centering
+\begin{asy}
+size (3cm);
+pair A, B, C, A1, B1, C1,P;
+A=(1,2);
+B=(0,0);
+C=(3,0);
+A1=B+dot(C-B,A-B)/dot(C-B,C-B)*(C-B);
+B1=C+dot(A-C,B-C)/dot(A-C,A-C)*(A-C);
+C1=A+dot(B-A,C-A)/dot(B-A,B-A)*(B-A);
+P=A+length(A-B)*length(A-C1)/dot(A-A1,A-A1)*(A1-A);
+draw(A--B--C--cycle);
+label("$A$",A,N);
+label("$B$",B,S);
+label("$C$",C,S);
+draw(A--A1);
+draw(B--B1);
+draw(C--C1);
+label("$A'$",A1,S);
+label("$B'$",B1,NE);
+label("$C'$",C1,NW);
+label("P",P,dir(-60));
+\end{asy}
+\label{fig:altitudes}
+\end{figure}
+Indeed, if $AA'$ and $CC'$ are altitudes in a triangle $ABC$, then the triangles $ABA'$ and $CBC'$ are similar, since they share an angle at $B$ and are both right. Hence $\frac{BA'}{C'B}=\frac{BA}{CB}$.
+\begin{figure}[h]
+\centering
+\begin{asy}
+size (3cm);
+pair A, B, C, A1, B1, C1,P;
+A=(1,2);
+B=(0,0);
+C=(3,0);
+A1=B+dot(C-B,A-B)/dot(C-B,C-B)*(C-B);
+B1=C+dot(A-C,B-C)/dot(A-C,A-C)*(A-C);
+C1=A+dot(B-A,C-A)/dot(B-A,B-A)*(B-A);
+P=A+length(A-B)*length(A-C1)/dot(A-A1,A-A1)*(A1-A);
+draw(A--B--C--cycle);
+label("$A$",A,N);
+label("$B$",B,S);
+label("$C$",C,S);
+draw(A--A1);
+draw(C--C1);
+label("$A'$",A1,S);
+label("$C'$",C1,NW);
+\end{asy}
+\label{fig:altitudes1}
+\end{figure}
+Applying this argument three times we get that the feet of the altitudes satisfy $\frac{BA'}{A'C}\cdot\frac{CB'}{B'A}\cdot\frac{AC'}{C'B}=\frac{BA'}{C'B}\cdot\frac{CB'}{A'C}\cdot\frac{AC'}{B'A}=\frac{BA}{CB}\cdot\frac{CB}{AC}\cdot\frac{AC}{BA}=1$. Ceva's theorem then implies that the altitudes are concurrent.
+Now we will re-prove this result without reference to Ceva's theorem. Instead we will apply a technique called angle chasing - we will repeatedly note relationships between different angles until we get what we need.
+So, let $AA'$ and $BB'$ be altitudes of triangle $ABC$ and let point $P$ be their point of intersection. Connect points $C$ and $P$ by a line and let $C'$ be the point of intersection of this line with side $AB$. We want to show that angle $\angle CC'B$ is right. For this note that $\angle AB'B=\angle AA' B = \pi/2$, so both points $B'$ and $A'$ lie on the circle having $AB$ as a diameter. The angles $\angle BAA'$ and $\angle BB'A'$ are supported by the same arc in this circle, and therefore they are equal. Similarly, since both angles $\angle PA'C$ and $\angle PB'C$ are right, the points $A'$ and $B'$ lie on the circle having $PC$ as a diameter. Angles $\angle A'CP$ and $\angle A'B'P$ are supported by the same arc in this circle, and hence are equal. Combining these two results we get that $\angle BAA'=\angle BP'A' = \angle PB'A' = \angle PCA' =\angle C'CB$. This means that in triangles $BAA'$ and $BCC'$ the angle at $B$ is common, and $\angle BAA' = \angle BCC'$ such that the other two angles must be equal as well: $\angle BC'C=\angle BA'A = \pi/2$, as required.
+\begin{figure}[h]
+\centering
+\begin{asy}
+size (3cm);
+pair A, B, C, A1, B1, C1,P;
+A=(1,2);
+B=(0,0);
+C=(3,0);
+A1=B+dot(C-B,A-B)/dot(C-B,C-B)*(C-B);
+B1=C+dot(A-C,B-C)/dot(A-C,A-C)*(A-C);
+C1=A+dot(B-A,C-A)/dot(B-A,B-A)*(B-A);
+P=A+length(A-B)*length(A-C1)/dot(A-A1,A-A1)*(A1-A);
+draw(circle((A+B)/2,length(A-B)/2),linetype("0 4"));
+draw(circle((C+P)/2,length(C-P)/2),linetype("0 4"));
+draw(A--B--C--cycle);
+label("$A$",A,N);
+label("$B$",B,S);
+label("$C$",C,S);
+draw(A--A1);
+draw(B--B1);
+draw(C--C1);
+label("$A'$",A1,S);
+label("$B'$",B1,NE);
+label("$C'$",C1,NW);
+label("P",P,dir(-60));
+\end{asy}
+\label{fig:altitudes2}
+\end{figure}
+There is a theorem which is very close to Ceva's theorem in spirit and in formulation, called Menelaus' theorem:
+\begin{theorem}
+Let $ABC$ be a triangle and let points $A', B'$ and $C'$ belong to the lines $BC, CA$ and $AB$ respectively.
+The points $A', B'$ and $C'$ belong to one line if and only if $\frac{A'B}{A'C}\cdot \frac{B'C}{B'A}\cdot\frac{C'A}{C'B}=1$
+\end{theorem}
+The reader may object that there must be some mistake in this formulation, because the condition $\frac{A'B}{A'C}\cdot \frac{B'C}{B'A}\cdot\frac{C'A}{C'B}=1$ from Menelaus' theorem is exactly the same as the condition $\frac{BA'}{A'C}\cdot\frac{CB'}{B'A}\cdot\frac{AC'}{C'B}=1$ that appeared in Ceva's theorem. If both theorems are correct, which one applies to any given triangle? One way to distinguish the cases in which the two theorems apply is to count the number of points $A',B'$ and $C'$ that lie outside of the corresponding sides $BC,CA$ and $AB$ - if none or two, then Ceva's theorem applies; if one or three - then Menelaus' applies. It is, however, much more pleasing (both aesthetically and rigorously) to treat both formulations on common grounds. For this we introduce the notion of oriented lengths.
+To speak of oriented length we need first a directed line, which is a line with one of its two directions chosen as "positive". The oriented length of a segment, from point $A$ on a directed line to point $B$ on the same line, is just its normal positive length if the direction from $A$ to $B$ agrees with the chosen direction along the line. If the direction from $A$ to $B$ is negative, then it is the normal length times $-1$.
+\input{./Ceva/figure10.tex}
+The oriented length of the segment from $A$ to $B$ on the oriented line from figure $\ref{fig:directed_segments}$ is positive, while the oriented length of the segment from $B$ to $A$ is negative. Notice that if we change the orientation of the line to the opposite one, the signs of the lengths will change as well.
+For a segment on a non-oriented line the sign of the length doesn't have any meaning (there is no reason to prefer moving in one of the directions along a line to moving in the other). However if we have two segments on the same line, then the quotient of the oriented lengths does makes sense: we can choose either direction along the line and compute the quotient of oriented lengths. If we choose the other direction instead, both oriented lengths will change sign, maintaining their quotient.
+\input{./Ceva/figure11.tex}
+Now, in the formulations of Ceva's and Menelaus' theorems the conditions $\frac{A'B}{A'C}\cdot \frac{B'C}{B'A}\cdot\frac{C'A}{C'B}=1$ and $\frac{BA'}{A'C}\cdot\frac{CB'}{B'A}\cdot\frac{AC'}{C'B}=1$ should be regarded as conditions on quotients of oriented lengths. When considered this way, they are indeed different: for Ceva's theorem the condition is $\frac{BA'}{A'C}\cdot\frac{CB'}{B'A}\cdot\frac{AC'}{C'B}=1$ while for Menelaus's theorem it is $\frac{BA'}{A'C}\cdot\frac{CB'}{B'A}\cdot\frac{AC'}{C'B}=-1$.
+\begin{question}
+Why does the condition $\frac{BA'}{A'C}\cdot\frac{CB'}{B'A}\cdot\frac{AC'}{C'B}=1$ of Ceva's theorem imply that either none or two of the points $A',B'$ and $C'$ lie outside the corresponding segments $BC,CA$ and $AB$? And for Menelaus?
+\end{question}
+Having clarified the formulations of Ceva's and Menelaus' theorems, we prove the latter. The following lemma will be helpful to us:
+\begin{lemma}
+Let $l_1,l_2$ be two lines. Let points $A_1, B_1, C_1, D_1$ belong to line $l_1$ and points $A_2,B_2,C_2,D_2$ - to line $l_2$. Suppose that the lines $A_1A_2,B_1B_2,C_1C_2$ and $D_1D_2$ are parallel. Then $\frac{A_1B_1}{C_1D_1}=\frac{A_2B_2}{C_2D_2}$.
+\end{lemma}
+This lemma can be interpreted as saying that the quotient of oriented lengths of segments is preserved under parallel projection from one line to another.
+\begin{proof}
+If lines $l_1,l_2$ are parallel, then if we translate the line $l_1$ so that the point $A_1$ is translated to point $A_2$, then the points $B_1$,$C_1$ and $D_1$ will get translated to points $B_2,C_2$ and $D_2$. Of course, translation preserves not just the quotients of lengths, but the lengths themselves.
+Suppose then that the lines $l_1$ and $l_2$ intersect at a point $O$. In that case considerations of similar triangles show that there is a number $k$ so that $k=\frac{OA_1}{OA_2}=\frac{OB_1}{OB_2}=\frac{OC_1}{OC_2}=\frac{OD_1}{OD_2}$. But then $\frac{A_1B_1}{C_1D_1}=\frac{OB_1-OA_1}{OD_1-OC_1}=\frac{k(OB_2-OA_2)}{k(OD_2-OC_2)}=\frac{A_2B_2}{C_2D_2}$ as we wanted to show.
+\end{proof}
+Now we can prove the theorem of Menelaus.
+\begin{proof}
+Suppose that the points $A',B',C'$ lie on one line. Choose any line $l$ which is not parallel to it, and consider a parallel projection of all the points to the line $l$ along the line $A'B'C'$. Then the points $A',B',C'$ project to the same point $O$ on the line $l$. Denote by $A_l,B_l,C_l$ the images of points $A,B,C$ under this projection. Then the lemma implies that $\frac{A'B}{A'C}=\frac{OB_l}{OC_l},\frac{B'C}{B'A}=\frac{OC_l}{OA_l},\frac{C'A}{C'B}=\frac{OA_l}{OB_l}$. By multiplying these three equalities we get that $\frac{BA'}{A'C}\cdot\frac{CB'}{B'A}\cdot\frac{AC'}{C'B}=\frac{OB_l}{OC_l}\cdot\frac{OC_l}{OA_l}\cdot\frac{OA_l}{OB_l}=1$ (because of cancellation).
+The proof of the converse direction is similar to the proof of the converse direction in Ceva's theorem: suppose $\frac{BA'}{A'C}\cdot\frac{CB'}{B'A}\cdot\frac{AC'}{C'B}=1$ and let $C''$ be the point on line $AB$ at which the line $A'B'$ intersects it. Then what we proved shows that $\frac{BA'}{A'C}\cdot\frac{CB'}{B'A}\cdot\frac{AC''}{C''B}=1$ and hence $\frac{AC''}{C''B}=\frac{AC'}{C'B}$, showing that $C''=C'$; that is, the point $C'$ lies on the line $A'B'$.
+\end{proof}
+\section{The relationship between Ceva's and Menelaus' theorems}
+One may wonder whether the results of Ceva and Menelaus, which are so similar in nature and formulation, can be deduced from each other. They can! Suppose we know Menelaus' theorem and want to deduce Ceva's: let $ABC$ be a triangle and let cevians $AA',BB'$ and $CC'$ meet at a point $P$.
+Then, the application of Menelaus' theorem to triangle $AB'B$ and line $C'PC$ gives that $\frac{AC'}{C'B}\cdot\frac{BP}{PB'}\cdot\frac{B'C}{CA}=-1$.
+\input{./Ceva/Ceva_from_Menelaus1.tex}
+The application of Menelaus' theorem to triangle $B'BC$ and line $APA'$ gives $\frac{BA'}{A'C}\cdot\frac{CA}{AB'}\cdot\frac{B'P}{PB}=-1$.
+\input{./Ceva/Ceva_from_Menelaus2.tex}
+By multiplying these equations we get$\frac{AC'}{C'B}\cdot\frac{BP}{PB'}\cdot\frac{B'C}{CA}\cdot\frac{BA'}{A'C}\cdot\frac{CA}{AB'}\cdot\frac{B'P}{PB}=1$,, , and by cancelling like terms we find$\frac{AC'}{C'B}\cdot\frac{BA'}{A'C}\cdot\frac{CB'}{B'A}=1$; thus proving Ceva's theorem.
+For the derivation of Menelaus' theorem from the theorem of Ceva we refer the reader to the exercises
+\input{./Ceva/exercise_Menelaus_from_Ceva.tex}

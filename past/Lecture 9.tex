@@ -1,0 +1,253 @@
+\chapter{Projective Geometry: Part 1}
+{Written by Kyungran Lee on March 19th, 2009} 
+
+{In reproducing Professor Khovanskii's March 19th lecture on projective geometry, I exercised the following editorial choices. First, while simplifying repetitions, I made use of font variations (e.g., \emph{italics}) to reflect the lecturer's tonal variations as I perceived them over the course of the lecture. Second, I consulted the course reading (Courant, R. (1996) \textit{What Is Mathematics?}) to make the components of the body of geometry (e.g., notations, definitions, theorems, etc.) to be in conformity with what one may expect to find in a typical printed variety on the same subject. Third, I added the D\"urer material in the section \textit{The Making of Projective Geometry} partially due to a voice recorder malfunction at the beginning of the lecture. The professor used a railroad example to explain the projective process implicated in the mapping of a three dimensional visual space onto the two dimensional human retinal surface. }
+
+
+
+% \begin{figure}[htbp] % figure placement: here, top, bottom, or page
+% \centering
+% \includegraphics[width=2.5in]{./chapter9/jerome1.pdf} 
+% \caption{D\"urer, A. (1514) \textit{Der heilige Hieronymus im Geh\"aus.} 
+% }
+% \label{fig:f1}
+% \end{figure}
+
+
+
+\section{The Making of Projective Geometry}
+
+\emph{Projective geometry} is closely related to the experience of \emph{visual perspective} in our daily lives.
+The term \textit{perspective} refers to changes in the appearance of surfaces or objects as they recede in distance away from an observer --- a topic in the study of visual depth perception, on the one hand. The \emph{geometry} of visual perspective, on the other hand, was developed during the fifteenth century by artists like Leonardo da Vinci and Albrecht D\"urer. Perspective drawing looks something like \textsc{Figure }$\ref{fig:f1}$\footnote{\ Retrieved from \textit{http://www.wga.hu/art/d/durer/2/13/4/077.jpg}}.
+Note that the outlines of the interior of St. Jerome's study is drawn in such a way that the lines \textit{converge}. In reality, the ceiling and the floor run \textit{parallel} to each other. The observer sees them as converging and draws them this way because the view of the saint recedes in depth away from the observation point. This convergence of lines is termed \textit{linear perspective}, and when pictorially portrayed it generates a strong impression of depth.
+
+The mathematical highlight worth a special attention is on \textit{intersection of lines, all lines}, including the \textit{lines running in parallel}. This point will be elabourated further in later sections. 
+
+\begin{figure}[htbp] % figure placement: here, top, bottom, or page
+\centering
+\includegraphics[scale= .85]{./chapter9/11.pdf} 
+\caption{Projection from a point.} 
+\label{fig:central}
+\end{figure}
+
+\begin{figure}[htbp] % figure placement: here, top, bottom, or page
+\centering
+\includegraphics[scale = .85 ]{./chapter9/12.pdf} 
+\caption{Parallel projection }
+\label{fig:parallel}
+\end{figure}
+
+A more precise illustration of \textit{projection} is as follows.
+\begin{definition} 
+Suppose we have two planes $\pi$ and $\pi'$ in space, not necessarily parallel to each other. We may then perform a \emph{\textbf{central projection}} \textsc{(Figure $\ref{fig:central}$)} of $\pi$ onto $\pi'$ from a given centre $O$ not lying in $\pi$ or $\pi'$ by defining image of each point $P$ of $\pi$ to be that point $P'$ of $\pi'$ such that $P$ and $P'$ lie on the same straight line through $O$. We may also perform a \emph{\textbf{parallel projection}} \textsc{(Figure $\ref{fig:parallel}$)} where the projecting lines are all parallel. In the same way, we can define the \emph{\textbf{projection of a line}} $l$ in a plane $\pi$ onto another line $l'$ in $\pi$ from a point $O$ in $\pi$ or by a parallel projection.\footnote{\ Courant, p.168} 
+\end{definition}
+
+Projective geometry is meaningful only in terms the geometrical attributes (and by extension, objects) that remain unchanged after a projection. For example, a circle may change into an ellipse after a projection. This implies that a circle cannot exist as meaningfully different from an ellipse (either a hyperbola, or a parabola) in projective geometry. In general, the attributes of distance, length, angle, etc. are not invariant under projections; therefore, the geometrical objects and propositions that make use of those attributes do not belong to projective geometry.
+
+
+
+\begin{definition} Any mapping of one figure onto another by a central or parallel projection, or by a finite succession of such projections, is called a \emph{\textbf{projective transformation}}. The \emph{\textbf{projective geometry}} of the plane or of the line consists of the body of those geometrical propositions which are unaffected by arbitrary projective transformations of the figures to which they refer.\footnote{\ Courant, p.169} \end{definition}
+
+Projective geometry can be viewed as a general case of and therefore a \emph{simpler} version of affine geometry. Take an example of \emph{cross ratio}, a concept which will be elaborated further in a later section. We can find an analogous concept to it from affine geometry. 
+
+\begin{center}\fbox{\begin{tabular}{ccl}
+
+
+% after \\ : \hline or \cline{col1-col2} \cline{col3-col4} ...
+Invariance of a quotient of line segments&: Affine geometry&=\\
+
+Invariance of a cross ratio& : Projective geometry & \\
+
+\end{tabular}
+}
+\end{center}\smallskip
+
+
+\section{Intersecting Parallel Lines and Points at Infinity}
+\begin{figure}[htbp] % figure placement: here, top, bottom, or page
+\centering
+\includegraphics[scale=.8]{./chapter9/1.pdf} 
+\caption{Projection into elements at infinity.} 
+\label{fig:f2}
+\end{figure}
+
+At first sight, projective mapping looks like a bijection. However, upon a careful examination, we find that there may arise some exceptions in projective mapping that do not quite meet the requirements of bijection, contradicting our first impression. \textsc{Figure $\ref{fig:f2}$} illustrates this issue.\footnote{\ Courant, p.183} Consider the projection of a plane $\pi$ onto a plane $\pi'$ from a centre $O$. This projection establishes a correspondence between the points and lines of $\pi$ and those of $\pi'$. To every point $A$ of $\pi$ corresponds a unique point $A'$ of $\pi'$, with the following exceptions. If the projecting ray through $O$ is parallel to the plane $\pi'$, then it intersects $\pi$ in a point $A$ to which no ordinary point of $\pi'$ corresponds. These exceptional points of $\pi$ lie on a line $l$ to which no ordinary point of $\pi'$ corresponds. 
+
+But these exceptions are eliminated if we make the agreement that to $A$ corresponds the \emph{point at infinity} in $\pi'$ in the direction of the line $OA$, and that to $l$ corresponds the \emph{line at infinity} in $\pi$. Thus, every point in the pre-image $\pi$ maps to some unique point in the image $\pi'$. In the same way, we assign a \emph{point at infinity} in $\pi$ to any point $B'$ on the line $m'$ in $\pi'$ through which pass all the rays parallel to the plane $\pi$. To $m'$ itself will correspond the \emph{line at infinity} in $\pi$. Thus, every point in the image $\pi'$ maps to some unique point in the pre-image $\pi$.
+
+Next, consider an interesting observation which will be used in the proof of Desargues theorem in a later section. A \emph{pencil of lines}\footnote{\ The set of all straight lines in a plane which pass through a given point $O$.} passing through the point $A$ are mapped onto a family of \emph{parallel} lines on $\pi'$. These parallel lines all intersect each other at the point at inifinity. %SECTION
+
+\section{An Algebraic Approach to Projective Geometry}
+So far we represented geometrical objects and the operations over them \emph{literally}. When we said ``a triangle'', we really meant a triangle and we performed non-symbolic operations on that triangle. In this section, however, we will kick it up a notch and try an \emph{algebraic approach}. 
+
+First, we need to construct a system of coordinates to represent a point on a projective plane. For this purpose, we make use of a non-zero \textbf{homogeneous coordinate} consisting of an ordered triple of real numbers. $P = (x,y,z)$, where $ x,y,z \in \mathbb{R}\mbox{ and }(0,0,0)\notin P$. The following relation of \emph{projective equivalence} holds. \[
+(x:y:z) \sim (\lambda x: \lambda y: \lambda z), \; \lambda \neq 0.\]
+
+
+Why do we represent a point on a two dimensional plane using a triple of coordinate elements and define a relation of projective equivalence separately. Is it necessary? This system of representation makes sense in consideration of what counts \emph{meaningful} in projective geometry. For concrete example, visualize a set of points which together form a line that lies in a three dimensional space. If we project this line onto a plane, only one point falls on the plane. Indeed, depending on the choice of the projective plane, a different point of the line intersects with the projective plane. Sometimes, no \emph{visible} point of the line intersects with the plane. If the projective plane is chosen such that it is \emph{parallel} to the line under projection, we say that a \emph{point at infinity} intersects with the projective plane.
+
+For real life example, a plane can be thought of as a \emph{chart}.\footnote{\ The etymological origin of the word \textit{chart} is synonymous to map.} A chart that gives an accurate description of the geography for Moscow may not do the same for Toronto. 
+
+
+%DESARGUES
+\section{Desargues (1593-1662) Theorem}
+\begin{theorem}[\textbf{Desargues Theorem in the plane}]
+
+If in a plane two triangles $ABC$ and $A'B'C'$ are situated so that the straight lines joining corresponding vertices are \emph{concurrent} in a point $O$, then the corresponding sides, if extended will intersect in three \emph{collinear} points. 
+
+\begin{figure}[htbp] % figure placement: here, top, bottom, or page
+\centering
+\includegraphics[scale=1]{./chapter9/des2.pdf} 
+\caption{Desargues's configuration in the plane.} 
+\label{fig:des2}
+\end{figure}
+
+\begin{figure}[htbp] % figure placement: here, top, bottom, or page
+\centering
+\includegraphics[scale=1.25]{./chapter9/desp.pdf} 
+\caption{Proof of Desargues's theorem.} 
+\label{fig:desp}
+\end{figure}
+
+\begin{proof}
+
+First , project the the figures so that $Q$ and $R$ go to infinity. This is achieved by projecting from a centre $O$ onto a plane $\pi'$ parallel to the plane of $O, A, B$. Add the point $B$ somewhere parallel to the plane $\pi'$ to \textsc{Figure $\ref{fig:f2}$} . Then the straight lines through A and those through $B$ will be transformed into two families of parallel lines. After the projection, $AB$ will be parallel to $A'B'$, $AC$ to $A'C'$, and the figure will appear as shown in \textsc{Figure $ \ref{fig:desp}$}. 
+
+Now, we only need to show that the intersection of $BC$ and $B'C'$ also goes to infinity, so that $BC$ is parallel to $B'C'$; then$P, Q, R$ will be collinear ( since they willlie on the line at infinity). Now
+\begin{eqnarray*}
+AB|| A'B' &\Rightarrow& \frac{u}{v}=\frac{r}{s},\\
+AC ||A'C' &\Rightarrow& \frac{x}{y}=\frac{r}{s},\\
+\therefore \frac{u}{v} =\frac{x}{y} &\Rightarrow& BC ||B'C' 
+\end{eqnarray*}
+\end{proof}
+\end{theorem}
+
+\begin{theorem}[\textbf{Desargues Theorem in space}]
+
+If two triangles $ABC$ and $A'B'C'$ are lie in two \emph{different}(non-parallel) planes and they situated so that the straight lines joining corresponding vertices are \emph{concurrent} in a point $O$, then the corresponding sides, if extended will intersect in three \emph{collinear} points. 
+
+
+\begin{figure}[htbp] % figure placement: here, top, bottom, or page
+\centering
+\includegraphics[scale=.7]{./chapter9/des3.pdf} 
+\caption{Desargues's configuration in space.} 
+\label{fig:des3}
+\end{figure}
+\begin{proof}
+$AB$ lies in the same plane as $A'B'$, so that these two lines intersect at some point $Q$; likewise $AC$ and $A'C'$ intersect in $R$, and $BC$ and $B'C'$ intersect in $P$. Since $P$ and $R$ are on extensions of the sides of $ABC$ and $ABC$, they lie in the same plane with each of these two triangles, and must consequently lie on the line of intersection of these two planes. Therefore $P,Q,$ and $R$ are collinear.
+\end{proof}
+\end{theorem} 
+
+
+
+
+%
+% The Essential Sameness between Projection and Linear Fractional Transformation%
+%
+%
+%
+\section{The Essential Sameness between Projection and Linear Fractional Transformation}
+A linear fractional transformation $T$ is a rational function of the special form \[T(z) = \frac{az+b}{ca+d},\] where $a,b,c,$ and $d$ are complex numbers and $ad-bc \neq 0$. The restriction $ad-bc \neq 0$ is essential, for otherwise \[T'(z) = \frac{az+b}{cz+d}\; \mbox{ for all }z,\] so $T$ is identically constant. A linear fractional transformation is a one-to-one mapping of the Riemann sphere (i.e., the complex plane plus the point at $\infty$) onto itself. 
+
+Now, we will derive an algebraic equivalent of the projective transforamtion $T$ of a point $t = (x,y)$ on the line $L_{1}$ in $\mathbb{R}^{2} $ onto the line $L_{2} $ in $\mathbb{R}^{2}$ where $T: t \rightarrow t' $. 
+Since this is a linear transformation, the transformation matrix $A$ can be written as \[A = \left(\begin{array}{cc}a & b \\c & d\end{array}\right),\quad \left|\begin{array}{cc}a & b \\c & d\end{array}\right|\neq 0.\] And \[ T: \left(\begin{array}{c}x \\y\end{array}\right) \rightarrow \left(\begin{array}{c}ax +by \\cx+ dy\end{array}\right).\]
+From projective equivalence, \[ (x,y) \sim (\frac{x}{y}, 1).\]
+Let $s = \frac{x}{y}$ for any coordinate pair $(x,y)$, so $(s,1) = ( \frac{x}{y},1) \sim (x,y) = t$. 
+
+Then for $ S: s \rightarrow s' $, \[ A\cdot\left(\begin{array}{c}x \\y\end{array}\right) \sim s' = \frac{ax+by}{cx+dy} = \frac{a\frac{x}{y}+b}{c\frac{x}{y}+d} = \frac{as+b}{cs+d}\]
+where
+\[ ad-bc \neq0.\]
+
+As a consequence of the sameness described above, the properties that hold true in fractional linear transformation also hold true in projection. Particularly, if three distinct pre-image points $t_{1}, t_{2}, t_{3}$ on the plane are given and if any other three distinct image points $t_{1}', t_{2}', t_{3}'$ are chosen, there is a necessarily \emph{a unique product of projections} (recall that multiplication is defined in the projective group). This also generalizes to $i = 4$ case. There is a unique product of projections that maps four distinct points on a plane to four distinct prescribed locations on a different plane, assuming no collinearity of more than three points. 
+
+The following property is a direct consequence from linear algebra. 
+\begin{theorem}
+If three lines $l,m,n$, none of which coincident, pass through one point, there is a linear transformation (an invertible matrix) that maps three lines to the lines $u,v,w$ located as prescribed.
+
+\begin{proof}
+Take any linearly independent three vectors $\mathbf{ e_{1}, e_{2}} \in \mathbb{R}^{3}$. 
+There is a transformation 
+$T_{A}$ 
+such that 
+$T_{A}: l \rightarrow f(\mathbf{e_{1}},\mathbf{ e_{2}}), T_{A}: m \rightarrow g(\mathbf{e_{1}},\mathbf{ e_{2}}) ,T_{A}: n \rightarrow h(\mathbf{e_{1}},\mathbf{ e_{2}})$ and 
+$T_{B}: u \rightarrow q(\mathbf{e_{1}},\mathbf{ e_{2}}) , T_{B}: v \rightarrow p(\mathbf{e_{1}},\mathbf{ e_{2}}) , T_{B}: w\rightarrow r(\mathbf{e_{1}},\mathbf{ e_{2}}) $. Thus, $T_{B}^{-1}( T_{A})$ is the unique linear transformation.\footnote{The professor only briefly touched on this proof without writing on the board because the material is beyond the scope of this course [second year algebra, I think]. Since the foundation of my linear algebra was shaky, this proof is not to be taken as accurate. } \end{proof}
+\end{theorem}
+%
+%Cross ratio
+%%%%%%
+
+
+
+
+
+\section{Cross Ratio}
+\begin{definition}
+If we have four points $A,B,C,D$ on a straight line, we define the \textbf{cross ratio} of the four points as \[\frac{CA}{CB} /\frac{DA}{DB}\]
+\begin{figure}[htbp] % figure placement: here, top, bottom, or page
+\centering
+\includegraphics[scale=1]{./chapter9/cr1.pdf} 
+\caption{Cross ratio $(A,B,C,D)$.} 
+\label{fig:cr1}
+\end{figure}
+\end{definition}
+\begin{figure}[htbp] % figure placement: here, top, bottom, or page
+\centering
+\includegraphics[scale=1.1]{./chapter9/cr2.pdf} 
+\caption{Cross ratio $(A,B,C,D)$.} 
+\label{fig:cr2}
+\end{figure}
+If we select a fixed point $O$ on $l$ as origin and choose as the coordinate $x$ of each point on $l$ its directed distance from $O$, so that the coordinates of $A,B,C,D$ are $x_{1}, x_{2}, x_{3},x_{4}$, respectively as \textsc{Figure $\ref{fig:cr2}$}, then \[(A,B,C,D)=\frac{CA}{CB} /\frac{DA}{DB}=\frac{ x_{3}- x_{1}}{x_{3}- x_{2}} /\frac{x_{4}- x_{1}}{x_{4}-x_{2}}. \]
+
+\begin{theorem}[\textbf{The Invariance of Cross Ratio}]
+If $A,B,C,D$ and $A',B',C',D'$ are corresponding points on two lines related by a projection, then \[
+\frac{CA}{CB} / \frac{DA}{DB}= \frac{C'A'}{C'B'} / \frac{D'A'}{D'B'}.\]
+\begin{figure}[hbp] % figure placement: here, top, bottom, or page
+\centering
+\includegraphics[scale=.9]{./chapter9/area.pdf} 
+\caption{$(A,B,C,D)= (A',B',C',D')$} 
+\label{fig:area}
+\end{figure}
+\begin{proof}
+Recall the area of a triangle is equal to $1/2(base \times altitude)$ and is also given by half the product of any two sides by the sine of the included angle. 
+\begin{eqnarray*}
+area \;OCA &=& \frac{1}{2}h \cdot CA = \frac{1}{2}OA\cdot OC \sin \angle COA\\
+area \;OCB &=& \frac{1}{2}h \cdot CB = \frac{1}{2}OB\cdot OC \sin \angle COB\\
+area \;ODA &=& \frac{1}{2}h \cdot DA = \frac{1}{2}OA\cdot OD \sin \angle DOA\\
+area \;ODB &=& \frac{1}{2}h \cdot DB = \frac{1}{2}OB\cdot OD \sin \angle DOB.
+\end{eqnarray*}
+
+It follows that
+\begin{eqnarray*}
+\frac{CA}{CB} / \frac{DA}{DB}&=& \frac{CA}{CB} \cdot \frac{DB}{DA}\\
+&=&\frac{OA\cdot OC \sin \angle COA}{OB\cdot OC \sin \angle COB}\cdot \frac{OB\cdot OD \sin \angle DOB}{OA\cdot OD \sin \angle DOA}\\
+&=& \frac{\sin \angle COA}{\sin \angle COB}\cdot \frac{\sin \angle DOB}{ \sin \angle DOA}.
+\end{eqnarray*}\
+
+Hence the cross ratio of $A,B,C,D$ depends only on the angles subtended at $O$ by the segments joining $A,B,C,D$. Since these angles are the same for any four points $A',B',C',D'$ into which $A,B,C,D$ may be projected from $O$, it follows that the cross ratio remains unchanged by projection. 
+\end{proof}
+
+\end{theorem}
+
+\begin{theorem}
+A complete diagonal is is a figure consisting of any four straight lines, no three o f which are concurrent, and of the six points where they intersect. In \textsc{Figure $\ref{fig:quad}$} the four lines are $AE,BE, BI, AF$. The lines through $AB, EG$, and $IF$ are the diagonals of the quadrilateral. Take any diagonal, say $AB$, and mark on it the point $C$ and $D$ where it meets the other two diagonals. $(ABCD)= -1$; in words, given a complete quadrilateral, the points of intersection of one diagonal with the other two separate the vertices on that diagonal harmonically.
+\begin{figure}[hbp] % figure placement: here, top, bottom, or page
+\centering
+\includegraphics[scale=.75]{./chapter9/quad.pdf} 
+\caption{Complete quadrilateral} 
+\label{fig:quad}
+\end{figure}
+
+\begin{figure}[htbp] % figure placement: here, top, bottom, or page
+\centering
+\includegraphics[scale=.3]{./chapter9/area2.pdf} 
+\caption{Projective transformation of a quadrilateral into a parallelogram} 
+\label{fig:area2}
+\end{figure}
+\begin{proof}
+Send $A,B$ to points in infinity $A',B' $by projection. Then the 4-gon inside the quadrilateral becomes a parallelogram. Since the intersection of the diagonals of a parallelogram is the midpoint $C'$ is the midpoint of $A'B'$, and the last intersection $D'$ is at infinity. Thus, $(ABC\infty)= -1$
+\end{proof}
+\end{theorem}
+
+Some solved exercises:
+
+\includepdf{./chapter9/extraproblemset1.pdf}

@@ -1,0 +1,178 @@
+\chapter{Spherical Geometry}
+
+The geometry we study in this chapter is the real geometry in the original meaning of the word: measuring the Earth. The surface of the Earth is in some approximation a sphere and the shortest way to go from one point on it to another is not a straight line, but rather a curve on the sphere. These curves are usually called geodesics.
+
+The geodesics on a sphere are parts of great circles, i.e. the circles which are the intersections of the sphere with a plane passing through the center of the sphere. For instance the shortest way to fly from a point on the equator of the Earth to another point on the equator is along the Equator. We won't prove it in this lecture, however.
+
+Instead we will define the spherical geometry in the way Klein would: the space we will be dealing with will be the sphere of radius $R$ centered at the origin of an Euclidean space and the group of isometries of spherical geometry will be the group of rotations around the origin.
+
+We will think of the great circles as of the lines in spherical geometry. Through any two points on the sphere we can draw a unique line in this sense, except for pairs of points, which are antipodes of each other, like North and South pole. For such points there is an infinite family of lines passing through them. Indeed, if the two points on the sphere are not opposite to each other, then they define a unique plane containing them and the origin; the intersection of this plane with the sphere is the great circle we are interested in. If the points are opposite to each other, instead of one plane we get a pencil of planes.
+
+\section{Area in Spherical Geometry}
+
+Now we would like to study the simplest figures on the sphere. Triangles were the simplest figures on a plane, but on a sphere we have a figure which is even simpler - a slice. A slice is the figure formed by two lines on the sphere. Note that on a sphere any two lines intersect at two points which are opposite to each other. The only parameter that a slice has is the angle formed by the two lines defining the slice (recall that angle between any two curves is defined as the angle between the tangent lines to these curves at the point of intersection; alternatively we can define an angle between two great circles on the sphere as the angle between the two planes that contain these great circles).
+
+Let's consider a slice of angle $\alpha$ and compute it's area. It's pretty obvious that the area of such a slice should be proportional to the angle $\alpha$. Now if we take $\alpha=\pi$, the slice is half-sphere, and hence it should have area $2\pi R^2$. Hence we get that the area of a slice of angle $\alpha$ is $2\alpha R^2$.
+
+Now let's consider a spherical triangle: a triangle cut out by three great circles. Let $\alpha,\beta,\gamma$ be its angles. The two slices of angle $\alpha$ together with the two slices of angle $\beta$ and together with two slices of angle $\gamma$ cover the entire sphere exactly once, except that they cover the two triangles they all cover three times. Thus the area of the whole sphere + the area of four triangles is the same as the sum of the areas of the six slices: $4\pi R^2+4A=4\alpha R^2+4\beta R^2+4\gamma R^2$, or $A=(\alpha+\beta+\gamma - \pi)R^2$, where $A$ denotes the area of the triangle.
+
+The result we got is very different from the sort of results we have in Euclidean geometry - in Euclidean geometry the sum of angles of a triangle is always $\pi$. In spherical geometry, however, the difference between the sum of angles and $\pi$ is proportional to the area of triangle! The statement that the sum of angles of planar triangle is $\pi$ follows in fact from what we proved for the spheres. Imagine a huge sphere of radius $R$ lying on a plane and imagine a triangle drawn on the plane. The spherical triangle obtained from it by central projection with center at the center of the sphere from the plane to the sphere is very close to the planar triangle, when $R$ is big enough. But then the difference of sum of angles of the spherical triangle and $\pi$ is equal to the area divided by $R^2$, so as $R$ tends to infinity, the spherical triangle approaches the planar one, the area approaches the area of planar triangle and thus the difference of sum of angles and $\pi$ approaches zero.
+
+The formula we proved could be used in principle to measure the radius of the Earth without using anything which doesn't lie on its surface. Indeed, if we could draw a big triangle on the surface of our sphere, measure its area accurately and measure its angles accurately, we would be able to find the radius of Earth.
+
+In fact ancient Greeks did know the radius of Earth with great precision. The reader is challenged to invent several practical ways to measure it.
+
+We can generalize the formula we obtained for spherical triangle to a spherical $n$-gon: all we have to do is cut the $n$-gon to $n-2$ triangles and then use that both the areas and the sums of the angles are additive (i.e. the area/sum of angles of the polygon is the same as the sum of areas/sums of angles of all the triangles in its triangulation). If we do so, we get that $A=(\text{sum of angles}-(n-2)\pi)R^2$.
+
+The formula we obtained for an $n$-gon could be generalized to a formula for an arbitrary piecewise smooth curve on the sphere (we can think of such curves as "$n$-gons with infinite number of sides). The $n$ that appears in this formula prevents us ,however, from doing so. Our first task then would be to rewrite the formula without $n$ appearing explicitly in it. We can write for instance that $A=(\sum_i{\alpha_i - \pi}+2\pi)R^2$, where $\alpha_i$ denote the angles of the $n$-gon. Now we can interpret the angles $\beta_i=\pi-\alpha_i$ as the exterior angles of the $n$-gon, and thus we get the formula $A=(2\pi-\text{sum of exterior angles})R^2$.
+
+In fact this last formula, once interpreted correctly, can be generalized to arbitrary two-dimensional surfaces! The quantity $\text{Area}/\pi R^2$ should be interpreted as the total amount of curvature enclosed by a curve (where curvature is a quantity that can be computed at any point of the surface and it expresses the local geometry of the surface near this point), the sum of exterior angles should be interpreted as the total amount by which a vector rotates, when moved in a parallel way along the curve, and finally the number $2$ should be replaced by $2$-the number of handles the surface has. This formula, known as Gauss-Bonnet formula, is one of the most basic facts in differential geometry of two-dimensional surfaces.
+
+\section{Bisectors, Medians and Heights in Spherical Geometry}
+
+We would like to prove the analogues of theorems about bisectors, medians and heights being concurrent in spherical geometry. The notions of bisectors, medians and heights are easy to define: we do know what angles and distances are in spherical geometry.
+
+In fact the proof of the claim that angle bisectors are concurrent can be repeated word-for-word from the corresponding planar proof. The crucial fact is that angle bisector is the locus of points equidistant from the two sides of the angle. Once we know this fact, we can take the point of intersection of two bisectors - it is equidistant from all three sides of the triangle. In particular it must lie on the third angle bisector as well.
+
+To prove the corresponding theorems about medians and heights we will use a different tool, which we didn't have in planar geometry.
+
+\subsection{Duality in Spherical Geometry}
+
+Duality in spherical geometry is reminiscent of what we had in projective geometry - it interchanges points and lines, collinearity and concurrency. In fact the duality in spherical geometry is even easier to visualize than that for projective geometry.
+
+We call line on a sphere dual to a point if the plane containing the line is orthogonal to the vector from the center of the sphere to the point on the sphere. Thus for every line there are two opposite points dual to them and for any point there is exactly one line dual to it.
+
+If three points lie on a line, then the three dual lines intersect at a pair of opposite points. This pair of points is the pair of points dual to the line on which the original three points lie. To see this, imagine a point rotating along a great circle. Then the dual plane is rotating around the axis connecting the two dual points to this great circle.
+
+Conversely, if three lines intersect at a point, then the six points dual to them (which consist of three pairs of opposite points) all lie on one line.
+
+To make the treatment of duality a little bit more symmetric (so that a point will be dual to a line and a line to a point, not to a couple of them, we can choose an orientation on a sphere and then define duality between points and oriented lines. Let us ignore this details for now.
+
+To deal with duality in concrete terms, we can use the notion of cross-product of vectors. Recall that the cross-product of two vectors $v$ and $w$ is the vector $v\times w$ which is orthogonal to $v$ and $w$ and whose length is equal to the area of parallelogram spanned by $v$ and $w$. The direction of this vector can be determined by a right- or left- hand rule, depending on the orientation chosen for the ambient three-dimensional space. In fact if we compute the cross-product of $v$ and $w$ in the other order, we get the same result, except pointing in opposite direction: $w\times v=- v\times w$.
+
+Other properties of cross-product include bilinearity:
+
+$v\times (w_1+w_2)=v\times w_1 + v\times w_2$ (also $(v_1+v_2)\times w=v_1\times w + v_2\times w$) ,
+
+$v\times (\lambda w)=(\lambda v) \times w = \lambda (v\times w)$
+
+and the Jacobi identity
+
+$(u\times v) \times w+(v\times w)\times u+(w\times u)\times v=0$
+
+This identity expresses the fact that cross-product is not associative, but is not too far from being associative (in the sense that associativity gets replaced by the Jacobi identity). Jacobi identity in fact appears in the theory of Lie algebras - infinitesimal motions or symmetries - and there it plays a fundamental role. In fact the Jacobi identity for the cross product is related to the Lie algebra of the group of all rotations of three-dimensional space.
+
+To verify that this identity is true, one can verify it for $u,v,w$ - vectors of some orthonormal basis and then use the bilinearity of the cross product to deduce it for any vectors. We will leave this verification to the reader.
+
+Now how is this notion of cross-product useful for our purposes? Let $A,B$ denote two points on a sphere, which are not opposite to each other. We will identify these points with the vectors from the origin to them. The vector $A\times B$ is a vector which is orthogonal to both $A$ and $B$. It is not lying on the sphere, but nevertheless it expresses the direction of axis, on which the points dual to the line through $A$ and $B$ lie (in fact the vector $\frac{A\times B}{|A\times B|}$ is exactly the point dual to the line $AB$).
+
+Let's apply this idea to proving that three medians in a triangle are concurrent. To prove this statement it is enough to show that the points dual to the medians are collinear. Now the midpoint of the segment $AB$ can be expressed as $\frac{A+B}{|A+B|}$ - since vectors $A$ and $B$ have equal length, the direction $A+B$ in plane through the origin, $A$ and $B$ which points towards the midpoint between $A$ and $B$.
+
+Thus the point dual to the median from vertex $C$, i.e. to the line connecting $C$ with the midpoint of $AB$ is proportional to $(A+B)\times C$. Similarly the points dual to other medians are proportional to $(B+C)\times A$ and $(C+A)\times B$ respectively. Now notice that antisymmetry of the cross-product implies that the sum $(A+B)\times C+(B+C)\times A+(C+A)\times B$ is equal to zero. This means that the origin and the points $(A+B)\times C$, $(B+C)\times A$ and $(C+A)\times B$ are coplanar, which implies the collinearity (on the sphere) of the points dual to the medians.
+
+The story is similar for the heights: the height from point $C$ must be orthogonal to the line joining $A$ and $B$, hence it must contain the point dual to line $AB$, i.e. the point $\frac{A\times B}{|A\times B|}$. Thus the point dual to this height must be orthogonal both to the direction $A\times B$ and to $C$. So the point dual to height from vertex $C$ is proportional to $(A\times B)\times C$. Similarly the points dual to the other heights are proportional to $(B\times C)\times A$ and $(C\times A)\times B$ respectively. Now notice that Jacobi identity for the cross-product implies that the sum $(A\times B)\times C+(B\times C)\times A+(C\times A)\times B$ is equal to zero. Like in the previous proof, this means that the origin and the points $(A\times B)\times C$, $(B\times C)\times A$ and $(C\times A)\times B$ are coplanar, which implies the collinearity (on the sphere) of the points dual to the heights.
+
+\section{Bonus: a Funny Proof of Pascal's Theorem}
+
+(to be moved to the section on Pascal's theorem)
+
+Let's go back to Pascal's theorem and try to prove it without mentioning the notion of cross-ratio. Our strategy this time will be as follows:
+
+Let $L_1,\ldots,L_6$ denote the equations of the six sides of the hexagon inscribed into a conic (i.e. $L_i$ is a linear function that vanishes exactly on the $i$-th side of the hexagon). We will prove that there exists a number $\lambda$ such that $L_1 L_3 L_5 = \lambda L_2 L_4 L_6$ for every point on the conic. This will imly that the quadratic polynomial $Q$ must divide the cubic polynomial $L_1 L_3 L_5 - \lambda L_2 L_4 L_6$. The quotient, $L$, will be a linear function that vanishes at every point not on the quadric where $L_1 L_3 L_5 - \lambda L_2 L_4 L_6$ vanishes. In particular it will vanish at points of intersection of $L_1$ with $L_4$, of $L_2$ with $L_5$ and of $L_3$ with $L_6$. Thus these points of intersection all lie on the line $L=0$, which proves Pascal's theorem.
+
+The only part that requires a further proof is the existence of number $\lambda$ so that $L_1 L_3 L_5 = \lambda L_2 L_4 L_6$ along the conic.
+
+First we present a very simple proof that relies, however, on knowledge of complex analysis. Consider all the equations we have as equations on complex numbers that define figures in complex plane. Also make also all the equations homogeneous and consider them in the complex projective plane. Then the quadric becomes isomorphic to the Riemann sphere - this follows from the fact that there exists a rational parametrization of the quadric and that the quadric is smooth. The function $\frac{L_1 L_3 L_5}{L_2 L_4 L_6}$ is in fact a function on the complex projective plane, since the numerator and the denominator are homogeneous of the same degree (3). Finally, when restricted to the quadric, this function doesn't have any poles - the zeros of the denominator get canceled with the zeros of the numerator (they both are at the vertices of the hexagon). Thus Liouville's theorem implies that the function must be constant: $\frac{L_1 L_3 L_5}{L_2 L_4 L_6}=\lambda$.
+
+While this proof is quite transparent, we would like to give an alternative proof that uses considerations with real numbers only. This way we will have a real (in the sense of real numbers) proof of Pascal's theorem, which the readers unfamiliar with complex analysis will be able to understand.
+
+Since Pascal's theorem is invariant under projective transformations, it is enough to prove it for the case when the quadric is a circle. For the circle we will choose the linear function vanishing on the side $L_i$ to be the function of distance to the side $L_i$ (we will think of this distance as positive on one side of the line $L_i$ and negative on the other side, so that it becomes a genuine linear function).
+
+We will prove the following more general statement:
+
+\begin{lemma}
+Let $L_1,\ldots,L_{2n}$ denote the sides of a $2n$-gon inscribed in a circle. Let $P$ be a point of the circle and let $h_i$ denote the distance from $O$ to $L_i$. Then $h_1 h_3 \ldots h_{2n-1}=\pm h_2 h_4 \ldots h_{2m}$ (the sign $\pm$ depends on the choices where the distances are positive and where they are negative).
+\end{lemma}
+
+\begin{proof}
+
+If $A$,$B$ and $C$ are three points on a circle of radius $R$, then the length of side $AB$ is equal to $2R \sin \angle ACB$, and thus the length of the height from $A$ to the side $BC$ is equal to $2R \sin \angle ACB \sin \angle ABC$.
+
+If we denote the vertices of the $2n$-gon inscribed in the circle $A_1,\ldots,A_{2n}$ (so that $h_i$ is the length of the height from point $P$ on the side $A_iA_{i+1}$), then the product $h_1 h_3 \ldots h_{2n-1}$ can be expressed as $$(2R \sin \angle PA_1A_2 \sin \angle PA_2A_1)(2R \sin \angle PA_3A_4 \sin \angle PA_4A_3)\ldots(2R \sin \angle PA_{2n-1}A_{2n} \sin \angle PA_{2n}A_{2n-1})$$ Similarly the product $h_2 h_4\ldots h_{2n}$ can be expressed as $$(2R \sin \angle PA_2A_3 \sin \angle PA_3A_2)(2R \sin \angle PA_4A_5 \sin \angle PA_5A_4)\ldots(2R \sin \angle PA_{2n}A_{1} \sin \angle PA_{1}A_{2n})$$ But now we notice that the angles $\angle PA_{i-1}A_i$ and $\angle PA_{i+1}A_i$ are always either equal or complimentary (i.e. sum up to $\pi$), so that their sines are equal.
+\end{proof}
+
+\section{Superbonus: revisiting the syllabus before the exam}
+
+\begin{itemize}
+\item Affine geometry
+
+Theorems of Ceva and Menelaus. {\color{light-gray} Three heights, three
+medians and three bisectors in a triangle are concurrent.}
+
+Center of mass and its properties.
+
+Affine transformations, quantities invariant under affine transformations.
+
+\item {\color{light-gray}Convex geometry
+
+Convex hulls.
+
+Simple polyhedra and their h-vectors. Dehn-Sommerville duality. Euler's formula for
+3-dimensional convex polyhedra.
+
+Helly's theorem.}
+
+\item Extreme problems in geometry
+
+Use of reflections for minimizing lengths of broken lines. {\color{light-gray}Triangle of minimal perimeter inscribed in a given triangle. A point which minimizes the sum of the distances from three given points.
+
+Isoperimetric problem.}
+
+Optical properties of conic sections. Billiard trajectories in an elliptic billiard.
+
+\item Inversions and Mobius transformations
+
+Properties of inversion: angle preservation, invariance of circles and lines as well as spheres and planes.
+
+Existence of inversions mapping a pair of non-intersecting circles into a pair of concentric circles.
+
+{\color{light-gray}Stereographic projection of a sphere onto a plane and its properties (as an application of inversion).}
+
+Mobius transformation is either fractional linear or composition of conjugation and fractional-linear transformation.
+
+Compositions of inversions are Mobius transformations.
+
+Mobius transformation mapping three distinct points to three distinct points.
+
+{\color{light-gray}Mobius transformations preserving a circle.}
+
+\item Ruler and Compass constructions
+
+What is possible to construct using ruler and compass.
+
+{\color{light-gray}Impossibility of constructing roots of irreducible cubic equations over $\mathbb{Q}$.}
+
+\item Projective geometry
+
+Projections. Desargues's theorem. Cross ratio of four collinear points and of four concurrent lines on a plane.
+
+Projective transformation of a line are fractional-linear.
+
+Coordinate formulas of projective transformations on a line and on a plane.
+
+Projective transformations between two lines in a plane.
+
+Cross ratio of four points on a conic section. Its direct and dual descriptions.
+
+Theorems of Pascal and Brianchon, including degenerate cases (Pappus theorem
+and its dual statement).
+
+General duality principle. Homogeneous coordinates.
+
+\item Spherical geometry
+
+Three heights, three medians and three bisectors of a spherical triangle.
+
+Areas of spherical polygons.
+
+\end{itemize}

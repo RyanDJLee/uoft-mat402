@@ -1,0 +1,4 @@
+comment lecture 10
+double ratio invariance in complex numbers:
+argument is about equal angles for different angles relying on the same arc in a circle
+absolute value?

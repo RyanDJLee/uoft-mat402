@@ -1,0 +1,13 @@
+Comments Chapter 1
+
+Comments from Askold:
+
+Urgent: add converse of Ceva's theorem! (seems to be done)
+
+Correction: Ceva's theorem is wrong: either the lines intersect at one point or they are parallel.
+
+In the relationship between Menelaus' theorem and Ceva's theorem one can add discussion of harmonic quadruples of points. Perhaps one can discuss this in the chapter on projective geometry.
+
+Comments from fofx:
+
+Is exercise 4 from problem set 1 still valid even if the given triangle is regular triangle?

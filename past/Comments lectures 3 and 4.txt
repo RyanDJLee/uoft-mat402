@@ -1,0 +1,6 @@
+Comments lectures 3 and 4
+Two corollaries of bilinearity: cosine theorem follows from bilinearity of projection (v,w)=|v||w|cos v,w
+[v,w]=|v||w|sin v,w sine theorem
+
+Add discussion about areas/masses/barycentric coordinates
+Add discussion about signs of barycentric coordinates
